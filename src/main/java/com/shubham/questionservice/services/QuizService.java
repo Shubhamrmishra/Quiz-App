@@ -20,9 +20,14 @@ import java.util.Optional;
 public class QuizService {
 
     @Autowired
-    QuizDao quizDao;
+     QuizDao quizDao;
     @Autowired
-    QuestionDao questionDao;
+     QuestionDao questionDao;
+
+    public QuizService(QuizDao quizDao, QuestionDao questionDao) {
+        this.quizDao = quizDao;
+        this.questionDao = questionDao;
+    }
 
     public List<Quiz> getQuizzes(String title) {
         List<Quiz> quizList= quizDao.getQuizzesByTitle(title);

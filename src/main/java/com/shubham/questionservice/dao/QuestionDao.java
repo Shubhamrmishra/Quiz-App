@@ -12,11 +12,11 @@ import java.util.List;
 public interface QuestionDao extends JpaRepository<Question, Integer> {
     List<Question> getQuestionByCategory(String category);
 
-    @Query("SELECT COUNT(q) FROM Questions q WHERE q.category = :category")
-    Integer getCategoryCount(@Param("category") String category);
+//    @Query("SELECT COUNT(q) FROM Questions q WHERE q.category = :category")
+//    Integer getCategoryCount(@Param("category") String category);
 
-    @Query("SELECT COUNT(q) FROM Questions q")
-    Integer getQuestionCount();
+//    @Query("SELECT COUNT(q) FROM Questions q")
+//    Integer getQuestionCount();
 
     @Query(value = "SELECT * FROM Questions q WHERE q.category = :category ORDER BY RAND() LIMIT :numQ", nativeQuery = true)
     List<Question> createQuiz(@Param("category") String category, @Param("numQ") int numQ);

@@ -19,6 +19,7 @@ public class QuestionMapper {
 
     public QuestionModel getAnswer(Question question) {
         QuestionModel questionModel = new QuestionModel();
+
         questionModel.questionTitle = question.getQuestionTitle();
         questionModel.rightAnswer = question.getRightAnswer();
 

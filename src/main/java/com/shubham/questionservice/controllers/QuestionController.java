@@ -13,17 +13,22 @@ import java.util.List;
 @RequestMapping("/question")
 public class QuestionController {
 
+
     @Autowired
     QuestionService questionService;
+    // Constructor injection
+    public QuestionController(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     @GetMapping("/allQuestions")
     public ResponseEntity<List<QuestionModel>> getAllQuestions() {
         return questionService.getAllQuestions();
     }
-    @GetMapping("/allQuestions/count")
-    public ResponseEntity<Integer> getAllQuestionsCount() {
-        return questionService.getQuestionCount();
-    }
+//    @GetMapping("/allQuestions/count")
+//    public ResponseEntity<Integer> getAllQuestionsCount() {
+//        return questionService.getQuestionCount();
+//    }
     @GetMapping("/allQuestions/{id}")
     public Question getQuestionById(@PathVariable Integer id) {
         return questionService.getQuestionById(id);
@@ -36,10 +41,10 @@ public class QuestionController {
     public List<Question> getQuestionByCategory(@PathVariable String category) {
         return questionService.getQuestionByCategory(category);
     }
-    @GetMapping("/category/{category}/count")
-    public Integer getCategoryCount(@PathVariable String category) {
-        return questionService.getCategoryCount(category);
-    }
+//    @GetMapping("/category/{category}/count")
+//    public Integer getCategoryCount(@PathVariable String category) {
+//        return questionService.getCategoryCount(category);
+//    }
     @PostMapping("/add")
     public Question addQuestion(@RequestBody Question question){
         return questionService.addQuestion(question);

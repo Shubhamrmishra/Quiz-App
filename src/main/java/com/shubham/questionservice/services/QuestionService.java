@@ -16,7 +16,10 @@ import java.util.List;
 @Service
 public class QuestionService {
     @Autowired
-    QuestionDao questionDao;
+     QuestionDao questionDao;
+    public QuestionService(QuestionDao questionDao) {
+        this.questionDao = questionDao;
+    }
 
 
     public ResponseEntity<List<QuestionModel>> getAllQuestions() {
@@ -32,14 +35,14 @@ public class QuestionService {
 
     }
 
-    public ResponseEntity<Integer> getQuestionCount() {
-        try {
-            return new ResponseEntity<>(questionDao.getQuestionCount(), HttpStatus.OK);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
-    }
+//    public ResponseEntity<Integer> getQuestionCount() {
+//        try {
+//            return new ResponseEntity<>(questionDao.getQuestionCount(), HttpStatus.OK);
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+//    }
 
     public Question getQuestionById(Integer id) {
         return questionDao.findById(id).orElseThrow(()-> new QuestionNotFoundException("Question for this" + id +"not found"));
@@ -56,9 +59,9 @@ public class QuestionService {
     public List<Question> getQuestionByCategory(String category) {
         return questionDao.getQuestionByCategory(category);
     }
-    public Integer getCategoryCount(String category) {
-      return questionDao.getCategoryCount(category);
-    }
+//    public Integer getCategoryCount(String category) {
+//      return questionDao.getCategoryCount(category);
+//    }
     public Question addQuestion(Question question) {
 
         return questionDao.save(question);

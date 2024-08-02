@@ -1,8 +1,6 @@
 package com.shubham.questionservice.model;
 
-import lombok.Data;
 
-@Data
 public class QuizModel {
 
 
